@@ -7,11 +7,9 @@
     "format:fix": "prettier **/*.{ts,json} --write"
   },
   "dependencies": {
-    "@mikro-orm/postgresql": "6.0.5"
+    "libpq": "1.8.12"
   },
   "devDependencies": {
-    "semantic-release": "23.0.0",
-    "prettier": "3.2.4",
-    "typescript": "5.3.3"
+    "semantic-release": "23.0.0"
   }
 }
