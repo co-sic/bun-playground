@@ -1,0 +1,6 @@
+version: '3.8'
+services:
+  bun:
+    build:
+      context: .
+    image: bun-playground:25
