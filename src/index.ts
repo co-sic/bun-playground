@@ -16,7 +16,6 @@ import {createContext, schema} from "./apollo";
         next();
     })
     app.use(express.json());
-    app.use(express.urlencoded({ extended: false }));
     app.use((req, _res, next) => {
         console.log("BODY:");
         console.log(req.body);
