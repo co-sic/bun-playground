@@ -1,11 +1,18 @@
 version: '3.8'
 services:
-  server:
+  service-a:
     build:
-      context: .
-    image: cosmo-bun-apollo-server:server
+      context: ./service-a
+    image: cosmo-bun-apollo-server:service-a
     ports:
-      - '4500:4500'
+      - '4501:4501'
+
+  service-b:
+    build:
+      context: ./service-b
+    image: cosmo-bun-apollo-server:service-b
+    ports:
+      - '4502:4502'
 
   cosmo-router:
     image: ghcr.io/wundergraph/cosmo/router:0.61.1
@@ -13,11 +20,11 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
-      - "4501:4501"
+      - "4500:4500"
     volumes:
       - ./config.json:/config.json
     environment:
       - ROUTER_CONFIG_PATH=./config.json
-      - LISTEN_ADDR=0.0.0.0:4501
+      - LISTEN_ADDR=0.0.0.0:4500
       - LOG_LEVEL=debug
       - DEV_MODE=true

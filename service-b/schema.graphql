@@ -1,0 +1,16 @@
+extend schema
+@link(url: "https://specs.apollo.dev/federation/v2.3", import: ["@key", "@requires", "@external"])
+{
+    query: Query
+}
+
+type Organization @key(fields: "id") {
+    id: ID!
+    customerNumber: String @external
+    currentFeatureFlagProductIds: [ID!]! @external
+    hasUnpaidFeatures: Boolean! @requires(fields: "customerNumber currentFeatureFlagProductIds")
+}
+
+type Query {
+    hello: String!
+}

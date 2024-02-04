@@ -1,6 +1,10 @@
 version: 1
 subgraphs:
-  - name: server
-    routing_url: http://localhost:4500/graphql
+  - name: service-a
+    routing_url: http://localhost:4501/graphql
     schema:
-      file: ./schema.graphql
+      file: ./service-a/schema.graphql
+  - name: service-b
+    routing_url: http://localhost:4502/graphql
+    schema:
+      file: ./service-b/schema.graphql

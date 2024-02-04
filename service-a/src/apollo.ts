@@ -1,15 +1,12 @@
 import {buildSubgraphSchema} from "@apollo/subgraph";
 import gql from "graphql-tag";
+import * as fs from "fs";
 
-const typeDefs = gql`
-  type Query {
-    hello: String!
-  }
-  `;
+const typeDefs = gql`${fs.readFileSync('./schema.graphql', 'utf8')}`;
 
 const resolvers = {
     Query: {
-        hello: () => 'Hello world!',
+        organization: () => ({id: '1', customerNumber: '100', currentFeatureFlagProductIds: ['1', '2']}),
     },
 }
 
