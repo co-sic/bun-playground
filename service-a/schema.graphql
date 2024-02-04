@@ -1,5 +1,5 @@
 extend schema
-@link(url: "https://specs.apollo.dev/federation/v2.3", import: ["@key", "@inaccessible"])
+@link(url: "https://specs.apollo.dev/federation/v2.3", import: ["@key"])
 {
     query: Query
 }
@@ -7,7 +7,7 @@ extend schema
 type Organization @key(fields: "id")  {
     id: ID!
     customerNumber: String
-    currentFeatureFlagProductIds: [ID!]! @inaccessible
+    currentFeatureFlagProductIds: [ID!]!
 }
 
 type Query {

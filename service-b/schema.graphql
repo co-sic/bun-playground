@@ -6,9 +6,8 @@ extend schema
 
 type Organization @key(fields: "id") {
     id: ID!
-    customerNumber: String @external
     currentFeatureFlagProductIds: [ID!]! @external
-    hasUnpaidFeatures: Boolean! @requires(fields: "customerNumber currentFeatureFlagProductIds")
+    hasUnpaidFeatures: Boolean! @requires(fields: "currentFeatureFlagProductIds")
 }
 
 type Query {
