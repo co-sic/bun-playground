@@ -10,17 +10,7 @@ import {createContext, schema} from "./apollo";
     const app = express();
     const port = '4500';
     app.set('port',port);
-    app.use((req, _res, next) => {
-        console.log("HEADERS:");
-        console.log(req.headers);
-        next();
-    })
     app.use(express.json());
-    app.use((req, _res, next) => {
-        console.log("BODY:");
-        console.log(req.body);
-        next();
-    })
 
     const httpServer = http.createServer(app);
     const apolloServer = new ApolloServer({

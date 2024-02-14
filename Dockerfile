@@ -1,17 +1,19 @@
-FROM oven/bun:1.0.25-alpine as parent
+FROM node:20-alpine as parent
 
 FROM parent as build
 
 
 WORKDIR /usr/src/app
 
-COPY package.json bun.lockb tsconfig.json ./
-RUN bun install --frozen-lockfile
+COPY package.json package-lock.json tsconfig.json ./
+RUN npm ci
 
 COPY src/ ./src/
+COPY schema.graphql ./schema.graphql
 
-RUN bun run build
+RUN npm run build
+
 
 EXPOSE 4500
 
-CMD [ "bun", "./dist/index.js" ]
+CMD [ "node", "./dist/index.js" ]

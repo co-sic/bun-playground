@@ -1,7 +1,33 @@
-{
-    query: Query
+type LeadCustomer {
+    id: ID!
+    companyName: String!
+}
+
+type Customer {
+    id: ID!
+    customerNumber: String!
+    companyName: String!
+}
+
+interface Offer {
+    id: ID!
+}
+
+type NewCustomerOffer implements Offer {
+    id: ID!
+    lead: LeadCustomer!
+}
+
+type ExistingCustomerOffer implements Offer {
+    id: ID!
+    customer: Customer!
+}
+
+type AdditionalServiceOffer implements Offer {
+    id: ID!
+    customer: Customer!
 }
 
 type Query {
-    hello: String!
+    offers: [Offer!]!
 }
