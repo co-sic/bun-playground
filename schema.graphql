@@ -1,33 +1,27 @@
-type LeadCustomer {
-    id: ID!
-    companyName: String!
+input PersonNameInput {
+    firstName: String!
+    lastName: String!
 }
 
-type Customer {
-    id: ID!
-    customerNumber: String!
-    companyName: String!
+
+input SignatureInput {
+    recipientName: PersonNameInput!
+    differentSignerName: PersonNameInput
 }
 
-interface Offer {
-    id: ID!
+input TestInput {
+    signature: SignatureInput
 }
 
-type NewCustomerOffer implements Offer {
-    id: ID!
-    lead: LeadCustomer!
+type TestPayload {
+    success: Boolean!
 }
 
-type ExistingCustomerOffer implements Offer {
-    id: ID!
-    customer: Customer!
-}
 
-type AdditionalServiceOffer implements Offer {
-    id: ID!
-    customer: Customer!
+type Mutation {
+    test(input: TestInput): TestPayload!
 }
 
 type Query {
-    offers: [Offer!]!
+    dummy: String
 }
